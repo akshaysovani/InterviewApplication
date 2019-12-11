@@ -1,29 +1,36 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:interview_application/models/requirement.dart';
+import 'package:interview_application/models/candidate.dart';
 
 //import 'package:first_flutter_app/utils/database_helper.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
 
-class HiringManagerFirstPage extends StatefulWidget {
+class InterviewerFirstPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return HiringManagerFirstPageState();
+    return InterviewerFirstPageState();
   }
 }
 
-class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
-  int count = 0;
-  List<Requirement> requirementList;
+class InterviewerFirstPageState extends State<InterviewerFirstPage> {
+  //int count = 0;
+  //List<Candidate> candidateList;
+  List<String> skills;
 
   @override
   Widget build(BuildContext context) {
-    if (requirementList == null) {
-      requirementList = List<Requirement>();
-      requirementList.add(Requirement(1, 'Java', 2));
-      requirementList.add(Requirement(2, 'Sales Representative', 4));
-      requirementList.add(Requirement(3, 'C++', 3));
+    if (skills == null) {
+      skills = List<String>();
+
+      skills.add('Java');
+      skills.add('C++');
+      skills.add('Python');
+      skills.add('R');
+      skills.add('Communication');
+      skills.add('SQL');
+
       /*requirementList[0].id = 1;
       requirementList[0].title = 'Java';
       requirementList[0].no_of_vacancies = 2;
@@ -35,14 +42,22 @@ class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
 */
       // updateListView();
     }
+
     return Scaffold(
-      appBar: AppBar(title: Text('Requirements')),
+      appBar: AppBar(
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              // goToPreviousPage();
+            }),
+        title: Text('Skills'),
+      ),
       body: getListView(),
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Add Requirement',
         child: Icon(Icons.add),
-      ),
+      ),*/
     );
   }
 
@@ -50,25 +65,31 @@ class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
     TextStyle titleStyle = Theme.of(context).textTheme.title;
     TextStyle subTitleStyle = Theme.of(context).textTheme.subtitle;
     return ListView.builder(
-        itemCount: this.requirementList.length,
+        itemCount: this.skills.length,
         itemBuilder: (BuildContext context, int position) {
           return Card(
             color: Colors.white,
             elevation: 2.0,
             child: ListTile(
-              leading: GestureDetector(
-                onTap: () {},
-                child: Icon(Icons.info, color: Colors.grey,),
+              title: Center(
+                child: Text(
+                  this.skills[position],
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+                ),
               ),
-              title: Text(
-                this.requirementList[position].title,
-                style: titleStyle,
-              ),
-              subtitle: Text(
-                this.requirementList[position].no_of_vacancies.toString(),
-                style: subTitleStyle,
-              ),
-              trailing: SizedBox(
+              /*subtitle: Text(
+                this.candidateList[position].experience_level,
+                style: TextStyle(
+                    fontSize: 16, fontWeight: FontWeight.w500
+                ),
+              ),*/
+              /*trailing: SizedBox(
+                width: 130,
+                child: Text('Cleared Round 2',
+                    style:
+                        TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
+              ),*/
+              /*trailing: SizedBox(
                 width: 80.0,
                 child: Row(
                   children: <Widget>[
@@ -83,7 +104,7 @@ class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
                     )
                   ],
                 ),
-              ),
+              ),*/
 
               /*
                 mainAxisSize: MainAxisSize.min,

@@ -1,29 +1,31 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:interview_application/models/requirement.dart';
+import 'package:interview_application/models/candidate.dart';
 
 //import 'package:first_flutter_app/utils/database_helper.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
 
-class HiringManagerFirstPage extends StatefulWidget {
+class LanguagePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return HiringManagerFirstPageState();
+    return LanguagePageState();
   }
 }
 
-class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
-  int count = 0;
-  List<Requirement> requirementList;
+class LanguagePageState extends State<LanguagePage> {
+  //int count = 0;
+  List<Candidate> candidateList;
 
   @override
   Widget build(BuildContext context) {
-    if (requirementList == null) {
-      requirementList = List<Requirement>();
-      requirementList.add(Requirement(1, 'Java', 2));
-      requirementList.add(Requirement(2, 'Sales Representative', 4));
-      requirementList.add(Requirement(3, 'C++', 3));
+    if (candidateList == null) {
+      candidateList = List<Candidate>();
+
+      candidateList.add(Candidate(1, 'Akshay Sovani', 'Developer', 'Java'));
+      candidateList.add(Candidate(1, 'Sanket Karandikar', 'Fresher', 'C++'));
+      candidateList.add(Candidate(1, 'Nachiket Gundi', 'Architect', 'Java'));
       /*requirementList[0].id = 1;
       requirementList[0].title = 'Java';
       requirementList[0].no_of_vacancies = 2;
@@ -36,13 +38,20 @@ class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
       // updateListView();
     }
     return Scaffold(
-      appBar: AppBar(title: Text('Requirements')),
+      appBar: AppBar(
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              // goToPreviousPage();
+            }),
+        title: Text('Java'),
+      ),
       body: getListView(),
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Add Requirement',
         child: Icon(Icons.add),
-      ),
+      ),*/
     );
   }
 
@@ -50,25 +59,30 @@ class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
     TextStyle titleStyle = Theme.of(context).textTheme.title;
     TextStyle subTitleStyle = Theme.of(context).textTheme.subtitle;
     return ListView.builder(
-        itemCount: this.requirementList.length,
+        itemCount: this.candidateList.length,
         itemBuilder: (BuildContext context, int position) {
           return Card(
             color: Colors.white,
             elevation: 2.0,
             child: ListTile(
-              leading: GestureDetector(
-                onTap: () {},
-                child: Icon(Icons.info, color: Colors.grey,),
-              ),
               title: Text(
-                this.requirementList[position].title,
-                style: titleStyle,
+                this.candidateList[position].name,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
               ),
               subtitle: Text(
-                this.requirementList[position].no_of_vacancies.toString(),
-                style: subTitleStyle,
+                this.candidateList[position].experience_level,
+                style: TextStyle(
+                  fontSize: 16, fontWeight: FontWeight.w500
+                ),
               ),
               trailing: SizedBox(
+                width: 130,
+                child: Text(
+                    'Cleared Round 2',
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500)
+                ),
+              ),
+              /*trailing: SizedBox(
                 width: 80.0,
                 child: Row(
                   children: <Widget>[
@@ -83,7 +97,7 @@ class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
                     )
                   ],
                 ),
-              ),
+              ),*/
 
               /*
                 mainAxisSize: MainAxisSize.min,
