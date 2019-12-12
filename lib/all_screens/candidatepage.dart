@@ -75,7 +75,7 @@ class CandidatePageState extends State<CandidatePage> {
                 this.roundsList[position].round_number.toString() +
                     '    ' +
                     this.roundsList[position].interviewer_name,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Colors.blue[900]),
               ),
 
               subtitle: Column(

@@ -44,7 +44,7 @@ class LanguagePageState extends State<LanguagePage> {
             onPressed: () {
               // goToPreviousPage();
             }),
-        title: Text('Java'),
+        title: Text('Java - Candidates'),
       ),
       body: getListView(),
       /*floatingActionButton: FloatingActionButton(
@@ -67,7 +67,7 @@ class LanguagePageState extends State<LanguagePage> {
             child: ListTile(
               title: Text(
                 this.candidateList[position].name,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21, color: Colors.blue[900]),
               ),
               subtitle: Text(
                 this.candidateList[position].experience_level,
@@ -79,7 +79,9 @@ class LanguagePageState extends State<LanguagePage> {
                 width: 130,
                 child: Text(
                     'Cleared Round 2',
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500)
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500,
+                    //    color: Colors.blue[900]
+                    )
                 ),
               ),
               /*trailing: SizedBox(

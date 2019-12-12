@@ -20,7 +20,9 @@ class HiringManagerAddRequirementState
   Widget build(BuildContext context) {
     TextStyle textStyle = Theme.of(context).textTheme.subtitle;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        //backgroundColor: Colors.grey[800],
         title: Text('Add Requirement'),
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
@@ -34,9 +36,9 @@ class HiringManagerAddRequirementState
               padding: EdgeInsets.only(top: 10, left: 10, right: 10),
               child: Center(
                 child: Text(
-                  'Long Press -> Add primary skill ' +
+                  'Long Press to add primary skill ' +
                       '\n' +
-                      'Single tap -> Add secondary skills',
+                      'Single tap to add secondary skills',
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                 ),
               )),
@@ -45,14 +47,16 @@ class HiringManagerAddRequirementState
           Padding(
               padding: EdgeInsets.only(
                 top: 20,
-                left: 90,
-                right: 90,
+                left: 120,
+                right: 120,
               ),
               child: SizedBox(
                 width: 50,
                 height: 35,
                 child: RaisedButton(
-                    color: Theme.of(context).accentColor,
+                    //color: Theme.of(context).accentColor,
+                    //color: Colors.grey[300],
+                    color: Colors.green,
                     textColor: Colors.white,
                     child: Text(
                       'Java',
@@ -68,15 +72,15 @@ class HiringManagerAddRequirementState
           Padding(
               padding: EdgeInsets.only(
                 top: 10,
-                left: 90,
-                right: 90,
+                left: 120,
+                right: 120,
               ),
               child: SizedBox(
                 width: 50,
                 height: 35,
                 child: RaisedButton(
-                    color: Theme.of(context).accentColor,
-                    textColor: Colors.white,
+                    color: Colors.grey[300],
+                    textColor: Colors.black,
                     child: Text(
                       'C++',
                       textScaleFactor: 1.5,
@@ -90,15 +94,18 @@ class HiringManagerAddRequirementState
           Padding(
               padding: EdgeInsets.only(
                 top: 5,
-                left: 90,
-                right: 90,
+                left: 120,
+                right: 120,
               ),
               child: SizedBox(
                 width: 50,
                 height: 35,
                 child: RaisedButton(
-                    color: Theme.of(context).accentColor,
+                    color: Colors.red,
                     textColor: Colors.white,
+
+                    //color: Colors.grey[300],
+                    //textColor: Colors.black,
                     child: Text(
                       'Python',
                       textScaleFactor: 1.5,
@@ -112,15 +119,15 @@ class HiringManagerAddRequirementState
           Padding(
               padding: EdgeInsets.only(
                 top: 5,
-                left: 90,
-                right: 90,
+                left: 120,
+                right: 120,
               ),
               child: SizedBox(
                 width: 50,
                 height: 35,
                 child: RaisedButton(
-                    color: Theme.of(context).accentColor,
-                    textColor: Colors.white,
+                    color: Colors.grey[300],
+                    textColor: Colors.black,
                     child: Text(
                       'SQL',
                       textScaleFactor: 1.5,
@@ -133,17 +140,17 @@ class HiringManagerAddRequirementState
           Padding(
               padding: EdgeInsets.only(
                 top: 5,
-                left: 90,
-                right: 90,
+                left: 120,
+                right: 120,
               ),
               child: SizedBox(
                 width: 50,
                 height: 35,
                 child: RaisedButton(
-                    color: Theme.of(context).accentColor,
-                    textColor: Colors.white,
+                    color: Colors.grey[300],
+                    textColor: Colors.black,
                     child: Text(
-                      'Communication',
+                      'AI',
                       textScaleFactor: 1.5,
                     ),
                     onPressed: () {
@@ -155,15 +162,17 @@ class HiringManagerAddRequirementState
           Padding(
               padding: EdgeInsets.only(
                 top: 5,
-                left: 90,
-                right: 90,
+                left: 120,
+                right: 120,
               ),
               child: SizedBox(
                 width: 50,
                 height: 35,
                 child: RaisedButton(
-                    color: Theme.of(context).accentColor,
+                    color: Colors.red,
                     textColor: Colors.white,
+                    //color: Colors.grey[300],
+                    //textColor: Colors.black,
                     child: Text(
                       'R',
                       textScaleFactor: 1.5,
@@ -177,56 +186,44 @@ class HiringManagerAddRequirementState
           Padding(
               padding: EdgeInsets.only(
                 top: 30,
-                left: 50,
-                right: 50,
+                left: 20,
+                right: 20,
               ),
               child: AutoCompleteTextField(
-                style: new TextStyle(color: Colors.black, fontSize: 16.0),
                 decoration: new InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4.0),
-                      borderSide: BorderSide(
-                        color: Colors.teal,
-                      )),
-                  /*border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.teal,
-                    ),
-                  ),*/
-                  suffixIcon: Container(
-                    width: 85.0,
-                    height: 60.0,
-                  ),
+                  //suffixIcon: Container(
+                    //width: 85.0,
+                    //height: 60.0,
+                  //),
                   contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
                   // filled: true,
-                  hintText: 'Add Project Name',
-                  hintStyle: textStyle,
+                  hintText: 'Project Name',
+                  hintStyle: TextStyle(color: Colors.blue[900]),
+                ),
+                style: new TextStyle(
+                  fontFamily: "Poppins",
                 ),
               )),
           // Project Name
 
           Padding(
               padding: EdgeInsets.only(
-                top: 15,
-                left: 50,
-                right: 50,
+                left: 20,
+                right: 20,
               ),
               child: AutoCompleteTextField(
-                style: new TextStyle(color: Colors.black, fontSize: 16.0),
                 decoration: new InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.teal,
-                    ),
-                  ),
-                  suffixIcon: Container(
-                    width: 85.0,
-                    height: 60.0,
-                  ),
-                  contentPadding: EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 4.0),
-                  //filled: true,
-                  hintText: 'Add Customer Name',
-                  hintStyle: textStyle,
+                  //suffixIcon: Container(
+                  //width: 85.0,
+                  //height: 60.0,
+                  //),
+                  contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
+                  // filled: true,
+                  hintText: 'Customer Name',
+                  hintStyle: TextStyle(color: Colors.blue[900]),
+                ),
+                style: new TextStyle(
+                  fontFamily: "Poppins",
                 ),
               )),
           // Customer Name
@@ -234,15 +231,18 @@ class HiringManagerAddRequirementState
           Padding(
               padding: EdgeInsets.only(
                 top: 40,
-                left: 90,
-                right: 90,
+                left: 20,
+                right: 20,
               ),
               child: SizedBox(
                 width: 50,
                 height: 35,
                 child: RaisedButton(
-                    color: Theme.of(context).accentColor,
-                    textColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(25.0),
+                        side: BorderSide(color: Colors.blue[900])),
+                    color: Colors.white,
+                    textColor: Colors.blue[900],
                     child: Text(
                       'Save',
                       textScaleFactor: 1.5,

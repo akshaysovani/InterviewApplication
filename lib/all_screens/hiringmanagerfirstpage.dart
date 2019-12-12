@@ -21,9 +21,10 @@ class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
   Widget build(BuildContext context) {
     if (requirementList == null) {
       requirementList = List<Requirement>();
-      requirementList.add(Requirement(1, 'Java', 2));
-      requirementList.add(Requirement(2, 'Sales Representative', 4));
-      requirementList.add(Requirement(3, 'C++', 3));
+      requirementList.add(Requirement(1, 'Java', 2,'Project alpha'));
+      requirementList.add(Requirement(2, 'Sales Representative', 4,'Project beta'));
+      requirementList.add(Requirement(3, 'C++', 3,'Project gamma'));
+      requirementList.add(Requirement(3, 'Java', 1,'Project gamma'));
       /*requirementList[0].id = 1;
       requirementList[0].title = 'Java';
       requirementList[0].no_of_vacancies = 2;
@@ -39,9 +40,10 @@ class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
       appBar: AppBar(title: Text('Requirements')),
       body: getListView(),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue[900],
         onPressed: () {},
         tooltip: 'Add Requirement',
-        child: Icon(Icons.add),
+        child: Icon(Icons.add, color: Colors.white,),
       ),
     );
   }
@@ -56,30 +58,56 @@ class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
             color: Colors.white,
             elevation: 2.0,
             child: ListTile(
-              leading: GestureDetector(
+              /*leading: GestureDetector(
                 onTap: () {},
-                child: Icon(Icons.info, color: Colors.grey,),
-              ),
+                child: Icon(Icons.info,
+                //    color: Colors.black
+                ),
+              ),*/
               title: Text(
-                this.requirementList[position].title,
-                style: titleStyle,
+                //'\n'+
+                this.requirementList[position].title
+                 + ' - ' + this.requirementList[position].no_of_vacancies.toString()
+                ,
+                style: TextStyle(
+                  color: Colors.blue[900],
+                  fontFamily: 'Helvetica',
+                  fontWeight: FontWeight.bold,
+                    fontSize: 18
+                ),
               ),
               subtitle: Text(
-                this.requirementList[position].no_of_vacancies.toString(),
-                style: subTitleStyle,
+                 //'\n' +
+                 this.requirementList[position].project_name
+                //  + '\n'
+                ,
+                style: TextStyle(
+                  fontFamily: 'Helvetica',
+                  color: Colors.grey[7000],
+                  fontWeight: FontWeight.bold,
+                    fontSize: 15
+                ),
               ),
               trailing: SizedBox(
                 width: 80.0,
                 child: Row(
                   children: <Widget>[
-                    GestureDetector(
-                      onTap: () {},
-                      child: Icon(Icons.edit),
+                    Container(
+                      //color: Colors.blue,
+                      child: GestureDetector(
+
+                        onTap: () {},
+                        child: Icon(Icons.edit
+                          //color: Colors.blue
+                        ),
+                      ),
                     ),
                     Container(width: 25,),
                     GestureDetector(
                       onTap: () {},
-                      child: Icon(Icons.delete),
+                      child: Icon(Icons.delete
+                        //color: Colors.red,
+                        ),
                     )
                   ],
                 ),

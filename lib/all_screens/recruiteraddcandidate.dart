@@ -8,38 +8,19 @@ import 'package:interview_application/models/radiobuttonmodel.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
 
-class InterviewerEnterFeedback extends StatefulWidget {
+class RecruiterAddCandidate extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return InterviewerEnterFeedbackState();
+    return RecruiterAddCandidateState();
   }
 }
 
-class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
-  int _radioCurrentValue = 1;
-  String _currentText = '';
+class RecruiterAddCandidateState extends State<RecruiterAddCandidate> {
 
-  List<RadioButtonModel> _radioList;
+  //List<> _radioList;
 
   @override
   Widget build(BuildContext context) {
-    if (_radioList == null) {
-      _radioList = List<RadioButtonModel>();
-      _radioList.add(RadioButtonModel(1, 'Pass'));
-      _radioList.add(RadioButtonModel(2, 'Fail'));
-
-      /*requirementList[0].id = 1;
-      requirementList[0].title = 'Java';
-      requirementList[0].no_of_vacancies = 2;
-      //requirementList[0].date_updated = ;
-
-      requirementList[1].id = 2;
-      requirementList[1].title = 'Sales Representative';
-      requirementList[1].no_of_vacancies = 4;
-*/
-      // updateListView();
-    }
-
     TextStyle textStyle = Theme.of(context).textTheme.subtitle;
     return Scaffold(
       appBar: AppBar(
@@ -123,30 +104,7 @@ class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
           ),
           //Feedback
 
-          Padding(
-            padding: EdgeInsets.only(
-              top: 20,
-              //left: 20,
-              right: 20,
-            ),
-            child: Column(
-                children: _radioList
-                    .map((t) => RadioListTile(
-                  activeColor: Colors.blue,
-                          title: Text('${t.text}', style: TextStyle(
-                            color: Colors.blue[900]
-                          )),
-                          groupValue: _radioCurrentValue,
-                          value: t.index,
-                          onChanged: (val) {
-                            setState(() {
-                              _radioCurrentValue = val;
-                              //_currentText = t.text;
-                            });
-                          },
-                        ))
-                    .toList()),
-          ),
+
 
           Padding(
               padding: EdgeInsets.only(

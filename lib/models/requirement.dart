@@ -2,12 +2,13 @@ class Requirement {
   int _id;
   String _title;
   int _no_of_vacancies;
+  String _project_name;
 //  String _date_updated;
 
   //int _priority;
 
 //  Requirement(this._title, this._no_of_vacancies, this._date_updated);
-  Requirement(this._id, this._title, this._no_of_vacancies);
+  Requirement(this._id, this._title, this._no_of_vacancies, this._project_name);
   // Note.withID(this._id, this._title, this._date, this._priority, // withID is the name of the constructor.
   //   [this._description]);
 
@@ -16,6 +17,8 @@ class Requirement {
   String get title => _title;
 
   int get no_of_vacancies => _no_of_vacancies;
+
+  String get project_name => _project_name;
 
  // String get date_updated => _date_updated;
 
@@ -31,6 +34,10 @@ class Requirement {
 
   set no_of_vacancies(int newDescription) {
     this._no_of_vacancies = newDescription;
+  }
+
+  set project_name(String newProjectName) {
+    this._project_name = newProjectName;
   }
 
   /*set date_updated(String newDate) {

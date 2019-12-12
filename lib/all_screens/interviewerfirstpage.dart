@@ -74,7 +74,7 @@ class InterviewerFirstPageState extends State<InterviewerFirstPage> {
               title: Center(
                 child: Text(
                   this.skills[position],
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21, color: Colors.blue[900]),
                 ),
               ),
               /*subtitle: Text(
