@@ -7,14 +7,15 @@ import 'package:interview_application/models/candidate.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
 
-class InterviewerSecondPage extends StatefulWidget {
+class RecruiterSeeCandidatesByRequirement extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return InterviewerSecondPageState();
+    return RecruiterSeeCandidatesByRequirementState();
   }
 }
 
-class InterviewerSecondPageState extends State<InterviewerSecondPage> {
+class RecruiterSeeCandidatesByRequirementState
+    extends State<RecruiterSeeCandidatesByRequirement> {
   //int count = 0;
   List<Candidate> candidateList;
 
@@ -38,21 +39,30 @@ class InterviewerSecondPageState extends State<InterviewerSecondPage> {
       // updateListView();
     }
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              // goToPreviousPage();
-            }),
-        title: Text('Java - Candidates'),
-      ),
-      body: getListView(),
-      /*floatingActionButton: FloatingActionButton(
+        appBar: AppBar(
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                // goToPreviousPage();
+              }),
+          title: Text('Java - Developer - Project alpha'),
+        ),
+        body: getListView(),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.blue[900],
+          onPressed: () {},
+          tooltip: 'Add Requirement',
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+        )
+        /*floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Add Requirement',
         child: Icon(Icons.add),
       ),*/
-    );
+        );
   }
 
   ListView getListView() {
@@ -67,63 +77,36 @@ class InterviewerSecondPageState extends State<InterviewerSecondPage> {
             child: ListTile(
               title: Text(
                 this.candidateList[position].name,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21, color: Colors.blue[900]),
-              ),
-              subtitle: Text(
-                this.candidateList[position].experience_level,
                 style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.w500
-                ),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 21,
+                    color: Colors.blue[900]),
               ),
               trailing: SizedBox(
-                width: 130,
-                child: Text(
-                    'Cleared Round 2',
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500,
-                      //    color: Colors.blue[900]
-                    )
-                ),
-              ),
-              /*trailing: SizedBox(
                 width: 80.0,
                 child: Row(
                   children: <Widget>[
-                    GestureDetector(
-                      onTap: () {},
-                      child: Icon(Icons.edit),
+                    Container(
+                      //color: Colors.blue,
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Icon(Icons.edit
+                            //color: Colors.blue
+                            ),
+                      ),
                     ),
-                    Container(width: 25,),
+                    Container(
+                      width: 25,
+                    ),
                     GestureDetector(
                       onTap: () {},
-                      child: Icon(Icons.delete),
+                      child: Icon(Icons.delete
+                          //color: Colors.red,
+                          ),
                     )
                   ],
                 ),
-              ),*/
-
-              /*
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 5, right: 5),
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Icon(Icons.edit),
-                      ),
-                    ),
-                  ), //edit
-
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 5, right: 5),
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Icon(Icons.delete),
-                      ),
-                    ),
-                  )
-                ],*/
+              ),
             ),
           );
         });

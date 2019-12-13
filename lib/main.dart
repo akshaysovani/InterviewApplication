@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:interview_application/all_screens/hiringmanagerfirstpage.dart';
-import 'package:interview_application/all_screens/languagepage.dart';
+import 'package:interview_application/all_screens/loginpage.dart';
+import 'package:interview_application/all_screens/hiringmanagerseerequirement.dart';
+import 'package:interview_application/all_screens/hiringmanagerseecandidates.dart';
 import 'package:interview_application/all_screens/hiringmanageraddrequirement.dart';
-import 'package:interview_application/all_screens/candidatepage.dart';
+import 'package:interview_application/all_screens/hiringmanagerseeroundsofcandidate.dart';
 import 'package:interview_application/all_screens/interviewerfirstpage.dart';
 import 'package:interview_application/all_screens/interviewersecondpage.dart';
+import 'package:interview_application/all_screens/Interviewerthirdpage.dart';
 import 'package:interview_application/all_screens/interviewerenterfeedback.dart';
 import 'package:interview_application/all_screens/recruiteraddcandidate.dart';
+import 'package:interview_application/all_screens/recruiterfirstpage.dart';
+import 'package:interview_application/all_screens/recruiterseecandidates.dart';
+import 'package:interview_application/all_screens/recruiterseeroundsofcandidate.dart';
 
 void main() {
   runApp(InterviewApp());
@@ -20,23 +25,26 @@ class InterviewApp extends StatelessWidget {
           primarySwatch: Colors.deepPurple
       ),*/
         theme: ThemeData(
-          //brightness: Brightness.dark,
-          primaryColor: Colors.blue[900],
-          accentColor: Colors.grey[200],
-          //backgroundColor: Colors.grey,
-        ),
+            //brightness: Brightness.dark,
+            primaryColor: Colors.blue[900],
+            accentColor: Colors.grey[200],
+            fontFamily: 'Open Sans'
+            //backgroundColor: Colors.grey,
+            ),
         debugShowCheckedModeBanner: false,
         title: 'Interview Helper',
 
-      home: InterviewerEnterFeedback(),
+        //home: RecruiterSeeRoundsOfCandidate(),
+        //home: RecruiterAddCandidate(),
+        //home: RecruiterSeeCandidatesByRequirement(),
+        //home: RecruiterFirstPage(),
         //home: InterviewerEnterFeedback(),
-        //home: LanguagePage()
+        //home: InterviewerThirdPage()
+        //home: InterviewerSecondPage()
         //home: InterviewerFirstPage()
-        //home: CandidatePage()
-        //home: LanguagePage()
+        //home: HiringManagerSeeRoundsOfCandidate()
+        //home: HiringManagerSeeCandidates()
         //home: HiringManagerAddRequirement(),
-        //home: HiringManagerFirstPage()
-
-    );
+        home: HiringManagerSeeRequirements());
   }
 }

@@ -2,30 +2,33 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:interview_application/models/requirement.dart';
 import 'package:interview_application/models/candidate.dart';
+import 'package:interview_application/models/round.dart';
 
 //import 'package:first_flutter_app/utils/database_helper.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
 
-class InterviewerSecondPage extends StatefulWidget {
+class InterviewerThirdPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return InterviewerSecondPageState();
+    return InterviewerThirdPageState();
   }
 }
 
-class InterviewerSecondPageState extends State<InterviewerSecondPage> {
+class InterviewerThirdPageState extends State<InterviewerThirdPage> {
   //int count = 0;
-  List<Candidate> candidateList;
+  List<Round> roundsList;
 
   @override
   Widget build(BuildContext context) {
-    if (candidateList == null) {
-      candidateList = List<Candidate>();
+    if (roundsList == null) {
+      roundsList = List<Round>();
 
-      candidateList.add(Candidate(1, 'Akshay Sovani', 'Developer', 'Java'));
-      candidateList.add(Candidate(1, 'Sanket Karandikar', 'Fresher', 'C++'));
-      candidateList.add(Candidate(1, 'Nachiket Gundi', 'Architect', 'Java'));
+      roundsList.add(Round(1, 'Pass', 'Interviewer 1',
+          'Excellent reading and writing skills, moderate communication skills, moderate technical skills'));
+      roundsList.add(Round(2, 'Pass', 'Interviewer 2',
+          'Nice reading and writing skills, moderate communication skills'));
+      roundsList.add(Round(3, 'Fail', 'Interviewer 3', 'Not good enough technical skills'));
       /*requirementList[0].id = 1;
       requirementList[0].title = 'Java';
       requirementList[0].no_of_vacancies = 2;
@@ -37,6 +40,7 @@ class InterviewerSecondPageState extends State<InterviewerSecondPage> {
 */
       // updateListView();
     }
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -44,45 +48,65 @@ class InterviewerSecondPageState extends State<InterviewerSecondPage> {
             onPressed: () {
               // goToPreviousPage();
             }),
-        title: Text('Java - Candidates'),
+        title: Text('Sanket Karandikar'),
       ),
       body: getListView(),
-      /*floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue[900],
         onPressed: () {},
-        tooltip: 'Add Requirement',
-        child: Icon(Icons.add),
-      ),*/
+        tooltip: 'Add Next Round Feedback',
+        child: Icon(Icons.add, color: Colors.white,),
+      ),
     );
   }
 
   ListView getListView() {
+    bool fullFeedbackOn = false;
     TextStyle titleStyle = Theme.of(context).textTheme.title;
     TextStyle subTitleStyle = Theme.of(context).textTheme.subtitle;
     return ListView.builder(
-        itemCount: this.candidateList.length,
+        itemCount: this.roundsList.length,
         itemBuilder: (BuildContext context, int position) {
           return Card(
             color: Colors.white,
             elevation: 2.0,
             child: ListTile(
               title: Text(
-                this.candidateList[position].name,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21, color: Colors.blue[900]),
+                '\n' +
+                    this.roundsList[position].round_number.toString() +
+                    '    ' +
+                    this.roundsList[position].interviewer_name,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Colors.blue[900]),
               ),
-              subtitle: Text(
-                this.candidateList[position].experience_level,
-                style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.w500
-                ),
+
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    '\n' + this.roundsList[position].feedback + '\n',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                    //maxLines: fullFeedbackOn ? 10 : 1,
+                    textAlign: TextAlign.start,
+                  ),
+                  /*InkWell(
+                    onTap: (){ setState(() {
+                      fullFeedbackOn = !fullFeedbackOn;
+                    }); },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        fullFeedbackOn ? Text("Show Less",style: TextStyle(color: Colors.blue),) :  Text("Show More",style: TextStyle(color: Colors.blue))
+                      ],
+                    ),
+                  ),*/
+                ],
               ),
+
               trailing: SizedBox(
-                width: 130,
-                child: Text(
-                    'Cleared Round 2',
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500,
-                      //    color: Colors.blue[900]
-                    )
-                ),
+                width: 40,
+                child: Text('\n'+this.roundsList[position].status,
+                    style:
+                    TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
               ),
               /*trailing: SizedBox(
                 width: 80.0,

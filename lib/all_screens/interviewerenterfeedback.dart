@@ -27,17 +27,6 @@ class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
       _radioList = List<RadioButtonModel>();
       _radioList.add(RadioButtonModel(1, 'Pass'));
       _radioList.add(RadioButtonModel(2, 'Fail'));
-
-      /*requirementList[0].id = 1;
-      requirementList[0].title = 'Java';
-      requirementList[0].no_of_vacancies = 2;
-      //requirementList[0].date_updated = ;
-
-      requirementList[1].id = 2;
-      requirementList[1].title = 'Sales Representative';
-      requirementList[1].no_of_vacancies = 4;
-*/
-      // updateListView();
     }
 
     TextStyle textStyle = Theme.of(context).textTheme.subtitle;
@@ -53,7 +42,7 @@ class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
       body: ListView(
         children: <Widget>[
           Padding(
-              padding: EdgeInsets.only(top: 50, left: 10, right: 10),
+              padding: EdgeInsets.only(top: 35, left: 10, right: 10),
               child: Center(
                 child: Text(
                   'Add Feedback',
@@ -76,7 +65,8 @@ class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
                 labelText: 'Interview Round Number',
                 hintText: 'e.g. 2',
                 labelStyle: TextStyle(
-                  color: Colors.blue[900],
+                  color: Colors.blue[900], fontSize: 18,
+                  fontFamily: 'Open Sans'
                 ),
               ),
             ),
@@ -84,6 +74,7 @@ class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
 
           Padding(
               padding: EdgeInsets.only(
+                top: 20,
                 left: 20,
                 right: 20,
               ),
@@ -93,14 +84,14 @@ class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
                   //width: 85.0,
                   //height: 60.0,
                   //),
-                  contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
+                  //contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
                   // filled: true,
                   labelText: 'Interviewer Name',
                   //hintText: 'Customer Name',
-                  labelStyle: TextStyle(color: Colors.blue[900]),
+                  labelStyle: TextStyle(color: Colors.blue[900], fontSize: 18, fontFamily: 'Open Sans',fontWeight: FontWeight.bold),
                 ),
                 style: new TextStyle(
-                  fontFamily: "Poppins",
+                    fontFamily: 'Open Sans'
                 ),
               )),
           // Interviewer Name
@@ -117,7 +108,7 @@ class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
               decoration: InputDecoration(
                 labelText: 'Feedback',
                 //hintText: 'Good in Java Spring, etc',
-                labelStyle: TextStyle(color: Colors.blue[900]),
+                labelStyle: TextStyle(color: Colors.blue[900], fontSize: 20, fontFamily: 'Open Sans'),
               ),
             ),
           ),
@@ -125,7 +116,7 @@ class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
 
           Padding(
             padding: EdgeInsets.only(
-              top: 20,
+              top: 30,
               //left: 20,
               right: 20,
             ),
@@ -134,7 +125,7 @@ class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
                     .map((t) => RadioListTile(
                   activeColor: Colors.blue,
                           title: Text('${t.text}', style: TextStyle(
-                            color: Colors.blue[900]
+                            color: Colors.blue[900], fontSize: 18, fontWeight: FontWeight.bold
                           )),
                           groupValue: _radioCurrentValue,
                           value: t.index,

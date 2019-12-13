@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:interview_application/models/requirement.dart';
+import 'package:interview_application/models/candidate.dart';
 
 //import 'package:first_flutter_app/utils/database_helper.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
 
-class HiringManagerFirstPage extends StatefulWidget {
+class HiringManagerSeeCandidates extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return HiringManagerFirstPageState();
+    return HiringManagerSeeCandidatesState();
   }
 }
 
-class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
-  int count = 0;
-  List<Requirement> requirementList;
+class HiringManagerSeeCandidatesState extends State<HiringManagerSeeCandidates> {
+  //int count = 0;
+  List<Candidate> candidateList;
 
   @override
   Widget build(BuildContext context) {
-    if (requirementList == null) {
-      requirementList = List<Requirement>();
-      requirementList.add(Requirement(1, 'Java', 2,'Project alpha'));
-      requirementList.add(Requirement(2, 'Sales Representative', 4,'Project beta'));
-      requirementList.add(Requirement(3, 'C++', 3,'Project gamma'));
-      requirementList.add(Requirement(3, 'Java', 1,'Project gamma'));
+    if (candidateList == null) {
+      candidateList = List<Candidate>();
+
+      candidateList.add(Candidate(1, 'Akshay Sovani', 'Developer', 'Java'));
+      candidateList.add(Candidate(1, 'Sanket Karandikar', 'Fresher', 'C++'));
+      candidateList.add(Candidate(1, 'Nachiket Gundi', 'Architect', 'Java'));
       /*requirementList[0].id = 1;
       requirementList[0].title = 'Java';
       requirementList[0].no_of_vacancies = 2;
@@ -37,14 +38,20 @@ class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
       // updateListView();
     }
     return Scaffold(
-      appBar: AppBar(title: Text('Requirements')),
+      appBar: AppBar(
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              // goToPreviousPage();
+            }),
+        title: Text('Java - Candidates'),
+      ),
       body: getListView(),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue[900],
+      /*floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Add Requirement',
-        child: Icon(Icons.add, color: Colors.white,),
-      ),
+        child: Icon(Icons.add),
+      ),*/
     );
   }
 
@@ -52,66 +59,41 @@ class HiringManagerFirstPageState extends State<HiringManagerFirstPage> {
     TextStyle titleStyle = Theme.of(context).textTheme.title;
     TextStyle subTitleStyle = Theme.of(context).textTheme.subtitle;
     return ListView.builder(
-        itemCount: this.requirementList.length,
+        itemCount: this.candidateList.length,
         itemBuilder: (BuildContext context, int position) {
           return Card(
             color: Colors.white,
             elevation: 2.0,
             child: ListTile(
-              /*leading: GestureDetector(
-                onTap: () {},
-                child: Icon(Icons.info,
-                //    color: Colors.black
-                ),
-              ),*/
               title: Text(
-                //'\n'+
-                this.requirementList[position].title
-                 + ' - ' + this.requirementList[position].no_of_vacancies.toString()
-                ,
-                style: TextStyle(
-                  color: Colors.blue[900],
-                  fontFamily: 'Helvetica',
-                  fontWeight: FontWeight.bold,
-                    fontSize: 18
-                ),
-              ),
-              subtitle: Text(
-                 //'\n' +
-                 this.requirementList[position].project_name
-                //  + '\n'
-                ,
-                style: TextStyle(
-                  fontFamily: 'Helvetica',
-                  color: Colors.grey[7000],
-                  fontWeight: FontWeight.bold,
-                    fontSize: 15
-                ),
+                this.candidateList[position].name,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.blue[900]),
               ),
               trailing: SizedBox(
+                width: 130,
+                child: Text(
+                    'Cleared Round 2',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500,
+                      //    color: Colors.blue[900]
+                    )
+                ),
+              ),
+              /*trailing: SizedBox(
                 width: 80.0,
                 child: Row(
                   children: <Widget>[
-                    Container(
-                      //color: Colors.blue,
-                      child: GestureDetector(
-
-                        onTap: () {},
-                        child: Icon(Icons.edit
-                          //color: Colors.blue
-                        ),
-                      ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Icon(Icons.edit),
                     ),
                     Container(width: 25,),
                     GestureDetector(
                       onTap: () {},
-                      child: Icon(Icons.delete
-                        //color: Colors.red,
-                        ),
+                      child: Icon(Icons.delete),
                     )
                   ],
                 ),
-              ),
+              ),*/
 
               /*
                 mainAxisSize: MainAxisSize.min,

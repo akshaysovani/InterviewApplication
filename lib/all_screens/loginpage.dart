@@ -7,14 +7,14 @@ import 'package:interview_application/models/requirement.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
 
-class RecruiterAddCandidate extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return RecruiterAddCandidateState();
+    return LoginPageState();
   }
 }
 
-class RecruiterAddCandidateState extends State<RecruiterAddCandidate> {
+class LoginPageState extends State<LoginPage> {
   @override
   var _experience = ['Fresher', 'Developer', 'Lead', 'Architect'];
   var _currentvalueselected = '';
@@ -109,8 +109,8 @@ class RecruiterAddCandidateState extends State<RecruiterAddCandidate> {
                 width: 50,
                 height: 35,
                 child: RaisedButton(
-                    //color: Theme.of(context).accentColor,
-                    //color: Colors.grey[300],
+                  //color: Theme.of(context).accentColor,
+                  //color: Colors.grey[300],
                     color: Colors.green,
                     textColor: Colors.white,
                     child: Text(
@@ -121,9 +121,9 @@ class RecruiterAddCandidateState extends State<RecruiterAddCandidate> {
                       setState(() {});
                     }),
               )
-              //Java
+            //Java
 
-              ),
+          ),
           Padding(
               padding: EdgeInsets.only(
                 top: 10,

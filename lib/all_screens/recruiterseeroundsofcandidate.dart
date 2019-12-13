@@ -8,14 +8,14 @@ import 'package:interview_application/models/round.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
 
-class CandidatePage extends StatefulWidget {
+class RecruiterSeeRoundsOfCandidate extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return CandidatePageState();
+    return RecruiterSeeRoundsOfCandidateState();
   }
 }
 
-class CandidatePageState extends State<CandidatePage> {
+class RecruiterSeeRoundsOfCandidateState extends State<RecruiterSeeRoundsOfCandidate> {
   //int count = 0;
   List<Round> roundsList;
 
@@ -72,7 +72,7 @@ class CandidatePageState extends State<CandidatePage> {
             child: ListTile(
               title: Text(
                 '\n' +
-                this.roundsList[position].round_number.toString() +
+                    this.roundsList[position].round_number.toString() +
                     '    ' +
                     this.roundsList[position].interviewer_name,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Colors.blue[900]),
@@ -105,7 +105,7 @@ class CandidatePageState extends State<CandidatePage> {
                 width: 40,
                 child: Text('\n'+this.roundsList[position].status,
                     style:
-                        TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
+                    TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
               ),
               /*trailing: SizedBox(
                 width: 80.0,
