@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interview_application/all_screens/interviewerenterfeedback.dart';
 import 'dart:async';
 import 'package:interview_application/models/requirement.dart';
 import 'package:interview_application/models/candidate.dart';
@@ -8,15 +9,21 @@ import 'package:interview_application/models/round.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
 
-class InterviewerThirdPage extends StatefulWidget {
+class InterviewerSeeRoundsOfCandidate extends StatefulWidget {
+  String candidateName;
+  InterviewerSeeRoundsOfCandidate(this.candidateName);
+
   @override
   State<StatefulWidget> createState() {
-    return InterviewerThirdPageState();
+    return InterviewerSeeRoundsOfCandidateState(this.candidateName);
   }
 }
 
-class InterviewerThirdPageState extends State<InterviewerThirdPage> {
+class InterviewerSeeRoundsOfCandidateState extends State<InterviewerSeeRoundsOfCandidate> {
   //int count = 0;
+  String candidateName;
+  InterviewerSeeRoundsOfCandidateState(this.candidateName);
+
   List<Round> roundsList;
 
   @override
@@ -47,13 +54,16 @@ class InterviewerThirdPageState extends State<InterviewerThirdPage> {
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               // goToPreviousPage();
+              goToInterviewerSeeCandidates();
             }),
-        title: Text('Sanket Karandikar'),
+        title: Text(this.candidateName),
       ),
       body: getListView(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue[900],
-        onPressed: () {},
+        onPressed: () {
+          goToInterviewerEnterFeedback(this.candidateName);
+        },
         tooltip: 'Add Next Round Feedback',
         child: Icon(Icons.add, color: Colors.white,),
       ),
@@ -151,5 +161,13 @@ class InterviewerThirdPageState extends State<InterviewerThirdPage> {
             ),
           );
         });
+  }
+  void goToInterviewerSeeCandidates(){
+    Navigator.pop(context);
+  }
+  void goToInterviewerEnterFeedback(String candidateName){
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return InterviewerEnterFeedback(candidateName);
+    }));
   }
 }

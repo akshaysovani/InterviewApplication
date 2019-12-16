@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:interview_application/all_screens/startpage.dart';
 import 'package:interview_application/all_screens/loginpage.dart';
 import 'package:interview_application/all_screens/hiringmanagerseerequirement.dart';
 import 'package:interview_application/all_screens/hiringmanagerseecandidates.dart';
 import 'package:interview_application/all_screens/hiringmanageraddrequirement.dart';
 import 'package:interview_application/all_screens/hiringmanagerseeroundsofcandidate.dart';
 import 'package:interview_application/all_screens/interviewerfirstpage.dart';
-import 'package:interview_application/all_screens/interviewersecondpage.dart';
-import 'package:interview_application/all_screens/Interviewerthirdpage.dart';
+import 'package:interview_application/all_screens/interviewerseecandidates.dart';
+import 'package:interview_application/all_screens/interviewerseeroundsofcandidate.dart';
 import 'package:interview_application/all_screens/interviewerenterfeedback.dart';
+import 'package:interview_application/all_screens/recruiterseecandidatesandrequirements.dart';
 import 'package:interview_application/all_screens/recruiteraddcandidate.dart';
-import 'package:interview_application/all_screens/recruiterfirstpage.dart';
+import 'package:interview_application/all_screens/recruiterseerequirements.dart';
 import 'package:interview_application/all_screens/recruiterseecandidates.dart';
 import 'package:interview_application/all_screens/recruiterseeroundsofcandidate.dart';
+import 'package:interview_application/all_screens/loginpage.dart';
 
 void main() {
   runApp(InterviewApp());
@@ -37,14 +40,19 @@ class InterviewApp extends StatelessWidget {
         //home: RecruiterSeeRoundsOfCandidate(),
         //home: RecruiterAddCandidate(),
         //home: RecruiterSeeCandidatesByRequirement(),
-        //home: RecruiterFirstPage(),
+        //home: RecruiterSeeRequirements()
+        //home: RecruiterSeeCandidatesAndRequirements()
+
         //home: InterviewerEnterFeedback(),
-        //home: InterviewerThirdPage()
-        //home: InterviewerSecondPage()
+        //home: InterviewerSeeRoundsOfCandidate()
+        //home: InterviewerSeeCandidates()
         //home: InterviewerFirstPage()
         //home: HiringManagerSeeRoundsOfCandidate()
         //home: HiringManagerSeeCandidates()
         //home: HiringManagerAddRequirement(),
-        home: HiringManagerSeeRequirements());
+        //home: HiringManagerSeeRequirements()
+        //home: LoginPage()
+        home: StartPage()
+    );
   }
 }

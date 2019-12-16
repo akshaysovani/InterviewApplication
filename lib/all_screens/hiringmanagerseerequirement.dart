@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:interview_application/all_screens/hiringmanageraddrequirement.dart';
+import 'package:interview_application/all_screens/hiringmanagerseecandidates.dart';
 import 'dart:async';
 import 'package:interview_application/models/requirement.dart';
-
 //import 'package:first_flutter_app/utils/database_helper.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
@@ -22,26 +23,26 @@ class HiringManagerSeeRequirementsState extends State<HiringManagerSeeRequiremen
     if (requirementList == null) {
       requirementList = List<Requirement>();
       requirementList.add(Requirement(1, 'Java', 'Developer','Project alpha'));
-      requirementList.add(Requirement(2, 'Sales Representative', 'Fresher','Project beta'));
+      requirementList.add(Requirement(2, 'Python', 'Fresher','Project beta'));
       requirementList.add(Requirement(3, 'C++', 'Developer','Project gamma'));
       requirementList.add(Requirement(3, 'Java', 'Architect','Project gamma'));
-      /*requirementList[0].id = 1;
-      requirementList[0].title = 'Java';
-      requirementList[0].no_of_vacancies = 2;
-      //requirementList[0].date_updated = ;
-
-      requirementList[1].id = 2;
-      requirementList[1].title = 'Sales Representative';
-      requirementList[1].no_of_vacancies = 4;
-*/
-      // updateListView();
     }
+
     return Scaffold(
-      appBar: AppBar(title: Text('Requirements')),
+      appBar: AppBar(
+          title: Text('Requirements'),
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                goToStartPage();
+              })
+      ),
       body: getListView(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue[900],
-        onPressed: () {},
+        onPressed: () {
+          goToHiringManagerAddRequirement();
+        },
         tooltip: 'Add Requirement',
         child: Icon(Icons.add, color: Colors.white,),
       ),
@@ -112,8 +113,28 @@ class HiringManagerSeeRequirementsState extends State<HiringManagerSeeRequiremen
                   ],
                 ),
               ),
+              onTap: (){
+                String title = this.requirementList[position].title + '  -  ' +  this.requirementList[position].experience_level;
+                goToHiringManagerSeeCandidates(title);
+              },
             ),
           );
         });
+  }
+
+  void goToHiringManagerAddRequirement(){
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+          return HiringManagerAddRequirement();
+    }));
+  }
+
+  void goToHiringManagerSeeCandidates(String title){
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return HiringManagerSeeCandidates(title);
+    }));
+  }
+
+  void goToStartPage(){
+    Navigator.pop(context);
   }
 }

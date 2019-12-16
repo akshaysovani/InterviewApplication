@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:interview_application/all_screens/recruiteraddcandidate.dart';
+import 'package:interview_application/all_screens/recruiterseeroundsofcandidate.dart';
 import 'dart:async';
 import 'package:interview_application/models/requirement.dart';
 import 'package:interview_application/models/candidate.dart';
@@ -23,34 +25,27 @@ class RecruiterSeeCandidatesByRequirementState
   Widget build(BuildContext context) {
     if (candidateList == null) {
       candidateList = List<Candidate>();
-
       candidateList.add(Candidate(1, 'Akshay Sovani', 'Developer', 'Java'));
       candidateList.add(Candidate(1, 'Sanket Karandikar', 'Fresher', 'C++'));
       candidateList.add(Candidate(1, 'Nachiket Gundi', 'Architect', 'Java'));
-      /*requirementList[0].id = 1;
-      requirementList[0].title = 'Java';
-      requirementList[0].no_of_vacancies = 2;
-      //requirementList[0].date_updated = ;
-
-      requirementList[1].id = 2;
-      requirementList[1].title = 'Sales Representative';
-      requirementList[1].no_of_vacancies = 4;
-*/
-      // updateListView();
     }
     return Scaffold(
-        appBar: AppBar(
+        /*appBar: AppBar(
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
                 // goToPreviousPage();
               }),
           title: Text('Java - Developer - Project alpha'),
-        ),
+        ),*/
+
+
         body: getListView(),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.blue[900],
-          onPressed: () {},
+          onPressed: () {
+            goToRecruiterAddCandidate();
+          },
           tooltip: 'Add Requirement',
           child: Icon(
             Icons.add,
@@ -107,8 +102,22 @@ class RecruiterSeeCandidatesByRequirementState
                   ],
                 ),
               ),
+              onTap: (){
+                goToRecruiterSeeRoundsOfCandidate(this.candidateList[position].name);
+              },
             ),
           );
         });
+  }
+  void goToRecruiterAddCandidate(){
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return RecruiterAddCandidate();
+    }));
+
+  }
+  void goToRecruiterSeeRoundsOfCandidate(String candidateName){
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return RecruiterSeeRoundsOfCandidate(candidateName);
+    }));
   }
 }

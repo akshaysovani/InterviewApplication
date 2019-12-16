@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interview_application/all_screens/hiringmanagerseeroundsofcandidate.dart';
 import 'dart:async';
 import 'package:interview_application/models/requirement.dart';
 import 'package:interview_application/models/candidate.dart';
@@ -8,14 +9,20 @@ import 'package:interview_application/models/candidate.dart';
 //import 'package:sqflite/sqflite.dart';
 
 class HiringManagerSeeCandidates extends StatefulWidget {
+  String languageAndExperienceTitle;
+
+  HiringManagerSeeCandidates(this.languageAndExperienceTitle);
   @override
   State<StatefulWidget> createState() {
-    return HiringManagerSeeCandidatesState();
+    return HiringManagerSeeCandidatesState(this.languageAndExperienceTitle);
   }
 }
 
 class HiringManagerSeeCandidatesState extends State<HiringManagerSeeCandidates> {
   //int count = 0;
+  String languageAndExperienceTitle;
+  HiringManagerSeeCandidatesState(this.languageAndExperienceTitle);
+
   List<Candidate> candidateList;
 
   @override
@@ -23,9 +30,9 @@ class HiringManagerSeeCandidatesState extends State<HiringManagerSeeCandidates> 
     if (candidateList == null) {
       candidateList = List<Candidate>();
 
-      candidateList.add(Candidate(1, 'Akshay Sovani', 'Developer', 'Java'));
       candidateList.add(Candidate(1, 'Sanket Karandikar', 'Fresher', 'C++'));
-      candidateList.add(Candidate(1, 'Nachiket Gundi', 'Architect', 'Java'));
+      candidateList.add(Candidate(2, 'Akshay Sovani', 'Developer', 'Java'));
+      candidateList.add(Candidate(3, 'Nachiket Gundi', 'Architect', 'Java'));
       /*requirementList[0].id = 1;
       requirementList[0].title = 'Java';
       requirementList[0].no_of_vacancies = 2;
@@ -37,14 +44,15 @@ class HiringManagerSeeCandidatesState extends State<HiringManagerSeeCandidates> 
 */
       // updateListView();
     }
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
-              // goToPreviousPage();
+              goToHiringManagerSeeRequirements();
             }),
-        title: Text('Java - Candidates'),
+        title: Text(this.languageAndExperienceTitle),
       ),
       body: getListView(),
       /*floatingActionButton: FloatingActionButton(
@@ -78,48 +86,21 @@ class HiringManagerSeeCandidatesState extends State<HiringManagerSeeCandidates> 
                     )
                 ),
               ),
-              /*trailing: SizedBox(
-                width: 80.0,
-                child: Row(
-                  children: <Widget>[
-                    GestureDetector(
-                      onTap: () {},
-                      child: Icon(Icons.edit),
-                    ),
-                    Container(width: 25,),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Icon(Icons.delete),
-                    )
-                  ],
-                ),
-              ),*/
 
-              /*
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 5, right: 5),
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Icon(Icons.edit),
-                      ),
-                    ),
-                  ), //edit
-
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 5, right: 5),
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Icon(Icons.delete),
-                      ),
-                    ),
-                  )
-                ],*/
+              onTap: (){
+                goToHiringManagerSeeRoundsOfCandidate(this.candidateList[position].name);
+              },
             ),
           );
         });
+  }
+  void goToHiringManagerSeeRequirements(){
+    Navigator.pop(context);
+  }
+
+  void goToHiringManagerSeeRoundsOfCandidate(String candidateName){
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return HiringManagerSeeRoundsOfCandidate(candidateName);
+    }));
   }
 }

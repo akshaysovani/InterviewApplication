@@ -27,7 +27,7 @@ class HiringManagerAddRequirementState
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
-              // goToPreviousPage();
+               goToHiringManagerSeeRequirements();
             }),
       ),
       body: ListView(
@@ -150,7 +150,7 @@ class HiringManagerAddRequirementState
                     color: Colors.grey[300],
                     textColor: Colors.black,
                     child: Text(
-                      'AI',
+                      'C#.NET',
                       textScaleFactor: 1.5,
                     ),
                     onPressed: () {
@@ -248,11 +248,33 @@ class HiringManagerAddRequirementState
                       textScaleFactor: 1.5,
                     ),
                     onPressed: () {
-                      setState(() {});
+                      setState(() {
+                        _save();
+                      });
                     }),
               ))
         ],
       ),
+    );
+  }
+
+  void goToHiringManagerSeeRequirements(){
+    Navigator.pop(context);
+  }
+
+  void _save(){
+    goToHiringManagerSeeRequirements();
+    _showAlertDialogue('Success', 'Requirement Added');
+  }
+
+  void _showAlertDialogue(String title,String msg){
+    AlertDialog alertDialog = AlertDialog(
+      title: Text(title),
+      content: Text(msg),
+    );
+    showDialog(
+        context: context,
+        builder: (_) => alertDialog
     );
   }
 }

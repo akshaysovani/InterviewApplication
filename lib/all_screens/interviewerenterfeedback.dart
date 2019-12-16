@@ -9,13 +9,19 @@ import 'package:interview_application/models/radiobuttonmodel.dart';
 //import 'package:sqflite/sqflite.dart';
 
 class InterviewerEnterFeedback extends StatefulWidget {
+  String candidateName;
+  InterviewerEnterFeedback(this.candidateName);
+
   @override
   State<StatefulWidget> createState() {
-    return InterviewerEnterFeedbackState();
+    return InterviewerEnterFeedbackState(this.candidateName);
   }
 }
 
 class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
+  String candidateName;
+  InterviewerEnterFeedbackState(this.candidateName);
+
   int _radioCurrentValue = 1;
   String _currentText = '';
 
@@ -32,11 +38,12 @@ class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
     TextStyle textStyle = Theme.of(context).textTheme.subtitle;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Akshay Sovani'),
+        title: Text(candidateName),
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               // goToPreviousPage();
+              goToInterviewerSeeRoundsOfCandidate();
             }),
       ),
       body: ListView(
@@ -159,7 +166,9 @@ class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
                       textScaleFactor: 1.5,
                     ),
                     onPressed: () {
-                      setState(() {});
+                      setState(() {
+                        _save();
+                      });
                     }),
               ))
         ],
@@ -171,4 +180,23 @@ class InterviewerEnterFeedbackState extends State<InterviewerEnterFeedback> {
       _radioValueStatus = value;
     });
   }*/
+  void _save(){
+    goToInterviewerSeeRoundsOfCandidate();
+    _showAlertDialogue('Success', 'Feedback Added');
+  }
+
+  void _showAlertDialogue(String title,String msg){
+    AlertDialog alertDialog = AlertDialog(
+      title: Text(title),
+      content: Text(msg),
+    );
+    showDialog(
+        context: context,
+        builder: (_) => alertDialog
+    );
+  }
+
+  void goToInterviewerSeeRoundsOfCandidate(){
+   Navigator.pop(context);
+  }
 }

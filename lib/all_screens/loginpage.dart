@@ -16,40 +16,28 @@ class LoginPage extends StatefulWidget {
 
 class LoginPageState extends State<LoginPage> {
   @override
-  var _experience = ['Fresher', 'Developer', 'Lead', 'Architect'];
-  var _currentvalueselected = '';
-
-  initState() {
-    super.initState();
-    _currentvalueselected = _experience[0];
-  }
-
   Widget build(BuildContext context) {
     TextStyle textStyle = Theme.of(context).textTheme.subtitle;
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        //backgroundColor: Colors.grey[800],
-        title: Text('Add Candidate'),
-        leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              // goToPreviousPage();
-            }),
-      ),
+      appBar: AppBar(),
       body: ListView(
         children: <Widget>[
+          LoginImageAsset(),
           Padding(
             padding: EdgeInsets.only(
-              top: 20,
+              top: 10,
               left: 20,
               right: 20,
             ),
             child: TextField(
-              style: textStyle,
-              //controller: tc,
+              style: textStyle, //controller: tc,
               decoration: InputDecoration(
-                labelText: 'Candidate Name',
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
+                labelText: 'Username',
                 //hintText: 'e.g. 2',
                 labelStyle: TextStyle(
                     color: Colors.blue[900],
@@ -58,217 +46,92 @@ class LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          // Project Name
-
           Padding(
             padding: EdgeInsets.only(
-              top: 20,
+              top: 30,
               left: 20,
               right: 20,
             ),
-            child: DropdownButton<String>(
-              items: _experience.map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(
-                    value,
-                    style: TextStyle(
-                        color: Colors.blue[900],
-                        fontSize: 18,
-                        fontFamily: 'Open Sans',
-                        fontWeight: FontWeight.bold),
-                  ),
-                );
-              }).toList(),
-              value: _currentvalueselected,
-              onChanged: (String newValue) {
-                _actiononchange(newValue);
-              },
+            child: TextField(
+              style: TextStyle(color: Colors.black),
+              //controller: tc,
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
+                labelText: 'Password',
+                //hintText: 'e.g. 2',
+                labelStyle: TextStyle(
+                    color: Colors.blue[900],
+                    fontSize: 18,
+                    fontFamily: 'Open Sans'),
+              ),
             ),
           ),
-
-          Padding(
-              padding: EdgeInsets.only(top: 30, left: 10, right: 10),
-              child: Center(
-                child: Text(
-                  'Long Press to add primary skill ' +
-                      '\n' +
-                      'Single tap to add secondary skills',
-                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                ),
-              )),
-          //Text
-
           Padding(
               padding: EdgeInsets.only(
-                top: 20,
-                left: 120,
-                right: 120,
-              ),
-              child: SizedBox(
-                width: 50,
-                height: 35,
-                child: RaisedButton(
-                  //color: Theme.of(context).accentColor,
-                  //color: Colors.grey[300],
-                    color: Colors.green,
-                    textColor: Colors.white,
-                    child: Text(
-                      'Java',
-                      textScaleFactor: 1.5,
-                    ),
-                    onPressed: () {
-                      setState(() {});
-                    }),
-              )
-            //Java
-
-          ),
-          Padding(
-              padding: EdgeInsets.only(
-                top: 10,
-                left: 120,
-                right: 120,
-              ),
-              child: SizedBox(
-                width: 50,
-                height: 35,
-                child: RaisedButton(
-                    color: Colors.grey[300],
-                    textColor: Colors.black,
-                    child: Text(
-                      'C++',
-                      textScaleFactor: 1.5,
-                    ),
-                    onPressed: () {
-                      setState(() {});
-                    }),
-              )),
-          //C++
-
-          Padding(
-              padding: EdgeInsets.only(
-                top: 5,
-                left: 120,
-                right: 120,
-              ),
-              child: SizedBox(
-                width: 50,
-                height: 35,
-                child: RaisedButton(
-                    color: Colors.red,
-                    textColor: Colors.white,
-
-                    //color: Colors.grey[300],
-                    //textColor: Colors.black,
-                    child: Text(
-                      'Python',
-                      textScaleFactor: 1.5,
-                    ),
-                    onPressed: () {
-                      setState(() {});
-                    }),
-              )),
-          //Python
-
-          Padding(
-              padding: EdgeInsets.only(
-                top: 5,
-                left: 120,
-                right: 120,
-              ),
-              child: SizedBox(
-                width: 50,
-                height: 35,
-                child: RaisedButton(
-                    color: Colors.grey[300],
-                    textColor: Colors.black,
-                    child: Text(
-                      'SQL',
-                      textScaleFactor: 1.5,
-                    ),
-                    onPressed: () {
-                      setState(() {});
-                    }),
-              )),
-
-          Padding(
-              padding: EdgeInsets.only(
-                top: 5,
-                left: 120,
-                right: 120,
-              ),
-              child: SizedBox(
-                width: 50,
-                height: 35,
-                child: RaisedButton(
-                    color: Colors.grey[300],
-                    textColor: Colors.black,
-                    child: Text(
-                      'AI',
-                      textScaleFactor: 1.5,
-                    ),
-                    onPressed: () {
-                      setState(() {});
-                    }),
-              )),
-          //Communication
-
-          Padding(
-              padding: EdgeInsets.only(
-                top: 5,
-                left: 120,
-                right: 120,
-              ),
-              child: SizedBox(
-                width: 50,
-                height: 35,
-                child: RaisedButton(
-                    color: Colors.red,
-                    textColor: Colors.white,
-                    //color: Colors.grey[300],
-                    //textColor: Colors.black,
-                    child: Text(
-                      'R',
-                      textScaleFactor: 1.5,
-                    ),
-                    onPressed: () {
-                      setState(() {});
-                    }),
-              )),
-          //R
-
-          Padding(
-              padding: EdgeInsets.only(
-                top: 50,
+                top: 40,
                 left: 20,
                 right: 20,
               ),
               child: SizedBox(
                 width: 50,
-                height: 35,
+                height: 44,
                 child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(25.0),
-                        side: BorderSide(color: Colors.blue[900])),
-                    color: Colors.white,
-                    textColor: Colors.blue[900],
+                        side: BorderSide(color: Colors.blue)),
+                    //color: Colors.white,
+                    color: Colors.blue[900],
+                    textColor: Colors.white,
                     child: Text(
-                      'Save',
+                      'LOGIN',
                       textScaleFactor: 1.5,
                     ),
                     onPressed: () {
                       setState(() {});
                     }),
-              ))
+              )),
+          Padding(
+              padding: EdgeInsets.only(
+                top: 30,
+                left: 20,
+                right: 20,
+              ),
+              child: getSignUpText())
         ],
       ),
     );
   }
 
-  void _actiononchange(String newValue) {
-    setState(() {
-      this._currentvalueselected = newValue;
-    });
+  Widget getSignUpText() {
+    return Row(
+      children: <Widget>[
+        Container(width: 40,),
+        Text('Don\'t have an account? ',
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontFamily: 'Open Sans')),
+        Text('Sign Up',
+            style: TextStyle(
+                color: Colors.blue[900], fontSize: 18, fontFamily: 'Open Sans'))
+      ],
+    );
+  }
+}
+
+class LoginImageAsset extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    AssetImage assetImage = AssetImage('assets/images/login.png');
+    Image image = Image(
+      image: assetImage,
+      height: 250,
+      width: 300,
+    );
+    return Container(child: image);
   }
 }

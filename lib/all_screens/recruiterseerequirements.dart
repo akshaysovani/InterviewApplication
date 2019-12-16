@@ -6,14 +6,14 @@ import 'package:interview_application/models/requirement.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
 
-class RecruiterFirstPage extends StatefulWidget {
+class RecruiterSeeRequirements extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return RecruiterFirstPageState();
+    return RecruiterSeeRequirementsState();
   }
 }
 
-class RecruiterFirstPageState extends State<RecruiterFirstPage> {
+class RecruiterSeeRequirementsState extends State<RecruiterSeeRequirements> {
   int count = 0;
   List<Requirement> requirementList;
 
@@ -37,7 +37,13 @@ class RecruiterFirstPageState extends State<RecruiterFirstPage> {
       // updateListView();
     }
     return Scaffold(
-      appBar: AppBar(title: Text('Requirements')),
+
+      /*appBar: AppBar(title: Text('Requirements'),
+          leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+        onPressed: () {
+          goToStartPage();
+        })),*/
       body: getListView(),
     );
   }
@@ -110,5 +116,8 @@ class RecruiterFirstPageState extends State<RecruiterFirstPage> {
             ),
           );
         });
+  }
+  void goToStartPage(){
+   Navigator.pop(context);
   }
 }

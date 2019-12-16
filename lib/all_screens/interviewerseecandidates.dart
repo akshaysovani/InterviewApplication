@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interview_application/all_screens/interviewerseeroundsofcandidate.dart';
 import 'dart:async';
 import 'package:interview_application/models/requirement.dart';
 import 'package:interview_application/models/candidate.dart';
@@ -7,14 +8,14 @@ import 'package:interview_application/models/candidate.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
 
-class InterviewerSecondPage extends StatefulWidget {
+class InterviewerSeeCandidates extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return InterviewerSecondPageState();
+    return InterviewerSeeCandidatesState();
   }
 }
 
-class InterviewerSecondPageState extends State<InterviewerSecondPage> {
+class InterviewerSeeCandidatesState extends State<InterviewerSeeCandidates> {
   //int count = 0;
   List<Candidate> candidateList;
 
@@ -26,6 +27,7 @@ class InterviewerSecondPageState extends State<InterviewerSecondPage> {
       candidateList.add(Candidate(1, 'Akshay Sovani', 'Developer', 'Java'));
       candidateList.add(Candidate(1, 'Sanket Karandikar', 'Fresher', 'C++'));
       candidateList.add(Candidate(1, 'Nachiket Gundi', 'Architect', 'Java'));
+
       /*requirementList[0].id = 1;
       requirementList[0].title = 'Java';
       requirementList[0].no_of_vacancies = 2;
@@ -43,8 +45,9 @@ class InterviewerSecondPageState extends State<InterviewerSecondPage> {
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               // goToPreviousPage();
+              goToStartPage();
             }),
-        title: Text('Java - Candidates'),
+        title: Text('Candidates'),
       ),
       body: getListView(),
       /*floatingActionButton: FloatingActionButton(
@@ -84,6 +87,9 @@ class InterviewerSecondPageState extends State<InterviewerSecondPage> {
                     )
                 ),
               ),
+              onTap: (){
+                goToInterviewerSeeRoundsOfCandidate(this.candidateList[position].name);
+              },
               /*trailing: SizedBox(
                 width: 80.0,
                 child: Row(
@@ -127,5 +133,14 @@ class InterviewerSecondPageState extends State<InterviewerSecondPage> {
             ),
           );
         });
+  }
+  void goToStartPage(){
+    Navigator.pop(context);
+  }
+
+  void goToInterviewerSeeRoundsOfCandidate(String candidateName){
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return InterviewerSeeRoundsOfCandidate(candidateName);
+    }));
   }
 }

@@ -3,20 +3,24 @@ import 'dart:async';
 import 'package:interview_application/models/requirement.dart';
 import 'package:interview_application/models/candidate.dart';
 import 'package:interview_application/models/round.dart';
-
 //import 'package:first_flutter_app/utils/database_helper.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
 
 class HiringManagerSeeRoundsOfCandidate extends StatefulWidget {
+  String candidateName;
+  HiringManagerSeeRoundsOfCandidate(this.candidateName);
+
   @override
   State<StatefulWidget> createState() {
-    return HiringManagerSeeRoundsOfCandidateState();
+    return HiringManagerSeeRoundsOfCandidateState(this.candidateName);
   }
 }
 
 class HiringManagerSeeRoundsOfCandidateState extends State<HiringManagerSeeRoundsOfCandidate> {
   //int count = 0;
+  String candidateName;
+  HiringManagerSeeRoundsOfCandidateState(this.candidateName);
   List<Round> roundsList;
 
   @override
@@ -29,15 +33,6 @@ class HiringManagerSeeRoundsOfCandidateState extends State<HiringManagerSeeRound
       roundsList.add(Round(2, 'Pass', 'Interviewer 2',
           'Nice reading and writing skills, moderate communication skills'));
       roundsList.add(Round(3, 'Fail', 'Interviewer 3', 'Not good enough technical skills'));
-      /*requirementList[0].id = 1;
-      requirementList[0].title = 'Java';
-      requirementList[0].no_of_vacancies = 2;
-      //requirementList[0].date_updated = ;
-
-      requirementList[1].id = 2;
-      requirementList[1].title = 'Sales Representative';
-      requirementList[1].no_of_vacancies = 4;
-*/
       // updateListView();
     }
 
@@ -46,9 +41,9 @@ class HiringManagerSeeRoundsOfCandidateState extends State<HiringManagerSeeRound
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
-              // goToPreviousPage();
+              goToHiringManagerSeeCandidates();
             }),
-        title: Text('Sanket Karandikar'),
+        title: Text(this.candidateName),
       ),
       body: getListView(),
       /*floatingActionButton: FloatingActionButton(
@@ -150,5 +145,9 @@ class HiringManagerSeeRoundsOfCandidateState extends State<HiringManagerSeeRound
             ),
           );
         });
+  }
+
+  void goToHiringManagerSeeCandidates(){
+    Navigator.pop(context);
   }
 }

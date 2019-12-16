@@ -34,6 +34,7 @@ class RecruiterAddCandidateState extends State<RecruiterAddCandidate> {
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
+              goToRecruiterSeeCandidate();
               // goToPreviousPage();
             }),
       ),
@@ -258,7 +259,9 @@ class RecruiterAddCandidateState extends State<RecruiterAddCandidate> {
                       textScaleFactor: 1.5,
                     ),
                     onPressed: () {
-                      setState(() {});
+                      setState(() {
+                        _save();
+                      });
                     }),
               ))
         ],
@@ -270,5 +273,25 @@ class RecruiterAddCandidateState extends State<RecruiterAddCandidate> {
     setState(() {
       this._currentvalueselected = newValue;
     });
+  }
+
+  void _save(){
+    goToRecruiterSeeCandidate();
+    _showAlertDialogue('Success', 'Candidate Added');
+  }
+
+  void _showAlertDialogue(String title,String msg){
+    AlertDialog alertDialog = AlertDialog(
+      title: Text(title),
+      content: Text(msg),
+    );
+    showDialog(
+        context: context,
+        builder: (_) => alertDialog
+    );
+  }
+
+  void goToRecruiterSeeCandidate(){
+    Navigator.pop(context);
   }
 }
