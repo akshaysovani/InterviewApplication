@@ -7,17 +7,82 @@ import 'package:interview_application/models/requirement.dart';
 //import 'package:first_flutter_app/All_screens/NoteDetail.dart';
 //import 'package:sqflite/sqflite.dart';
 
-class HiringManagerAddRequirement extends StatefulWidget {
+class HiringManagerEditRequirementTest extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return HiringManagerAddRequirementState();
+    return HiringManagerEditRequirementTestState();
   }
 }
 
-class HiringManagerAddRequirementState
-    extends State<HiringManagerAddRequirement> {
+class HiringManagerEditRequirementTestState
+    extends State<HiringManagerEditRequirementTest> {
+  List<String> primarySkills;
+  List<String> secondarySkills;
+  List<String> softSkills;
+  List<String> allSkills;
+  List<bool> pressAttention;
+  List<bool> longpressAttention;
+
   @override
   Widget build(BuildContext context) {
+
+    if (primarySkills == null){
+      primarySkills = List<String>();
+      primarySkills.add('Java');
+      primarySkills.add('C++');
+      primarySkills.add('Python');
+      primarySkills.add('C#.net');
+      primarySkills.add('Problem Solving');
+    }
+
+    if (secondarySkills == null){
+      secondarySkills = List<String>();
+      secondarySkills.add('R');
+      secondarySkills.add('SQL');
+
+    }
+
+    if (softSkills == null){
+      softSkills = List<String>();
+      softSkills.add('Communication');
+      softSkills.add('Confidence');
+      softSkills.add('Attitude');
+      softSkills.add('Timeliness');
+      softSkills.add('Logical Ability');
+    }
+
+    if (allSkills == null){
+      allSkills = List<String>();
+
+      for (String skill in primarySkills){
+        allSkills.add(skill);
+      }
+      for (String skill in secondarySkills){
+        allSkills.add(skill);
+      }
+      for (String skill in softSkills){
+        allSkills.add(skill);
+      }
+    }
+
+    if (pressAttention == null){
+      pressAttention = List<bool>();
+      for (int i=0;i<allSkills.length;i++){
+        pressAttention.add(false);
+      }
+    }
+
+    if (longpressAttention == null){
+      longpressAttention = List<bool>();
+      for (int i=0;i<allSkills.length;i++){
+        longpressAttention.add(false);
+      }
+    }
+    //for (int i=0;i<allSkills.length;i++){
+    //debugPrint(pressAttention[i].toString());
+    //}
+
+
     TextStyle textStyle = Theme.of(context).textTheme.subtitle;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -30,10 +95,12 @@ class HiringManagerAddRequirementState
               goToHiringManagerSeeRequirements();
             }),
       ),
+
       body: ListView(
+        //shrinkWrap: false,
         children: <Widget>[
           Padding(
-              padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+              padding: EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 10),
               child: Center(
                 child: Text(
                   'Long Press to add primary skill ' +
@@ -44,6 +111,52 @@ class HiringManagerAddRequirementState
               )),
           //Text
 
+          Container(
+            height: 400,
+            width:  200,
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: allSkills.length,
+                itemBuilder :(BuildContext context, int position){
+                  return Padding(
+                      padding: EdgeInsets.only(
+                        top: 10,
+                        left: 80,
+                        right: 80,
+                      ),
+                      child: SizedBox(
+                        width: 200,
+                        height: 30,
+                        child: RaisedButton(
+                          //color: Theme.of(context).accentColor,
+                          //color: Colors.grey[300],
+                          color: getColour(position),
+                          textColor: Colors.white,
+                          child: Text(
+                            allSkills[position],
+                            textScaleFactor: 1.5,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              pressAttention[position] = !pressAttention[position];
+                            });
+                          },
+                          onLongPress: (){
+                            setState(() {
+                              longpressAttention[position] = !longpressAttention[position];
+                            });
+                          },
+
+                        ),
+                      )
+                    //Java
+
+                  );
+                }
+            ),
+          ),
+
+/*
           Padding(
               padding: EdgeInsets.only(
                 top: 20,
@@ -69,6 +182,7 @@ class HiringManagerAddRequirementState
             //Java
 
           ),
+
           Padding(
               padding: EdgeInsets.only(
                 top: 10,
@@ -183,6 +297,9 @@ class HiringManagerAddRequirementState
               )),
           //R
 
+          */
+
+
           Padding(
               padding: EdgeInsets.only(
                 top: 30,
@@ -230,9 +347,10 @@ class HiringManagerAddRequirementState
 
           Padding(
               padding: EdgeInsets.only(
-                top: 40,
-                left: 20,
-                right: 20,
+                  top: 40,
+                  left: 20,
+                  right: 20,
+                  bottom: 30
               ),
               child: SizedBox(
                 width: 50,
@@ -276,5 +394,15 @@ class HiringManagerAddRequirementState
         context: context,
         builder: (_) => alertDialog
     );
+  }
+
+  Color getColour(int position){
+    if (pressAttention[position]) {
+      return Colors.green;
+    }else if (longpressAttention[position]){
+      return Colors.red;
+    }else{
+      return Colors.grey;
+    }
   }
 }

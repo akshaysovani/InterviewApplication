@@ -23,6 +23,33 @@ class RecruiterSeeCandidatesAndRequirementsState
   Icon searchIcon = Icon(Icons.search);
   Widget searchBar = Text('Interview Helper');
 
+  TextEditingController _controller = TextEditingController();
+  bool _isSearching;
+  String _searchText = "";
+  List searchResult = List();
+
+  RecruiterSeeCandidatesAndRequirementsState(){
+    _controller.addListener(() {
+      if (_controller.text.isEmpty) {
+        setState(() {
+          _isSearching = false;
+          _searchText = "";
+        });
+      } else {
+        setState(() {
+          _isSearching = true;
+          _searchText = _controller.text;
+        });
+      }
+    });
+  }
+
+  void initState(){
+    super.initState();
+    _isSearching = false;
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -58,14 +85,16 @@ class RecruiterSeeCandidatesAndRequirementsState
           ),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.search),
+              icon: this.searchIcon,
               onPressed: () {
                 setState(() {
                   if (this.searchIcon.icon == Icons.search) {
-                    this.searchIcon = Icon(Icons.description);
+                    this.searchIcon = Icon(Icons.close);
                     this.searchBar = TextField(
+                      controller: _controller,
                       textInputAction: TextInputAction.go,
                       style: TextStyle(color: Colors.white, fontSize: 18),
+
                     );
                   } else {
                     this.searchIcon = Icon(Icons.search);
@@ -76,6 +105,8 @@ class RecruiterSeeCandidatesAndRequirementsState
             )
           ],
         ),
+
+
         body: TabBarView(
           children: <Widget>[
             RecruiterSeeCandidatesByRequirement(),

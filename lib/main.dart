@@ -4,12 +4,14 @@ import 'package:interview_application/all_screens/loginpage.dart';
 import 'package:interview_application/all_screens/hiringmanagerseerequirement.dart';
 import 'package:interview_application/all_screens/hiringmanagerseecandidates.dart';
 import 'package:interview_application/all_screens/hiringmanageraddrequirement.dart';
+import 'package:interview_application/all_screens/hiringmanageraddrequirementtest.dart';
 import 'package:interview_application/all_screens/hiringmanagerseeroundsofcandidate.dart';
 import 'package:interview_application/all_screens/interviewerfirstpage.dart';
 import 'package:interview_application/all_screens/interviewerseecandidates.dart';
 import 'package:interview_application/all_screens/interviewerseeroundsofcandidate.dart';
 import 'package:interview_application/all_screens/interviewerenterfeedback.dart';
 import 'package:interview_application/all_screens/recruiterseecandidatesandrequirements.dart';
+import 'package:interview_application/all_screens/test.dart';
 import 'package:interview_application/all_screens/recruiteraddcandidate.dart';
 import 'package:interview_application/all_screens/recruiterseerequirements.dart';
 import 'package:interview_application/all_screens/recruiterseecandidates.dart';
@@ -41,7 +43,7 @@ class InterviewApp extends StatelessWidget {
         //home: RecruiterAddCandidate(),
         //home: RecruiterSeeCandidatesByRequirement(),
         //home: RecruiterSeeRequirements()
-        //home: RecruiterSeeCandidatesAndRequirements()
+        //home: RecruiterSeeCandidatesAndRequirementsTest()
 
         //home: InterviewerEnterFeedback(),
         //home: InterviewerSeeRoundsOfCandidate()
@@ -50,6 +52,7 @@ class InterviewApp extends StatelessWidget {
         //home: HiringManagerSeeRoundsOfCandidate()
         //home: HiringManagerSeeCandidates()
         //home: HiringManagerAddRequirement(),
+        //home: HiringManagerAddRequirementTest(),
         //home: HiringManagerSeeRequirements()
         //home: LoginPage()
         home: StartPage()

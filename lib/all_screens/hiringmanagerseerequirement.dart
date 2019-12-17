@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interview_application/all_screens/hiringmanageraddrequirementtest.dart';
 import 'package:interview_application/all_screens/hiringmanageraddrequirement.dart';
 import 'package:interview_application/all_screens/hiringmanagerseecandidates.dart';
 import 'dart:async';
@@ -25,7 +26,7 @@ class HiringManagerSeeRequirementsState extends State<HiringManagerSeeRequiremen
       requirementList.add(Requirement(1, 'Java', 'Developer','Project alpha'));
       requirementList.add(Requirement(2, 'Python', 'Fresher','Project beta'));
       requirementList.add(Requirement(3, 'C++', 'Developer','Project gamma'));
-      requirementList.add(Requirement(3, 'Java', 'Architect','Project gamma'));
+      requirementList.add(Requirement(4, 'Java', 'Architect','Project gamma'));
     }
 
     return Scaffold(
@@ -41,7 +42,7 @@ class HiringManagerSeeRequirementsState extends State<HiringManagerSeeRequiremen
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue[900],
         onPressed: () {
-          goToHiringManagerAddRequirement();
+          goToHiringManagerAddRequirementTest(Requirement(5,'','',''), 'Add Requirement');
         },
         tooltip: 'Add Requirement',
         child: Icon(Icons.add, color: Colors.white,),
@@ -97,7 +98,10 @@ class HiringManagerSeeRequirementsState extends State<HiringManagerSeeRequiremen
                       //color: Colors.blue,
                       child: GestureDetector(
 
-                        onTap: () {},
+                        onTap: () {
+                          String title = 'Edit - ' + this.requirementList[position].title + ' - ' + this.requirementList[position].experience_level;
+                          goToHiringManagerAddRequirementTest(this.requirementList[position],title);
+                        },
                         child: Icon(Icons.edit
                           //color: Colors.blue
                         ),
@@ -122,9 +126,9 @@ class HiringManagerSeeRequirementsState extends State<HiringManagerSeeRequiremen
         });
   }
 
-  void goToHiringManagerAddRequirement(){
+  void goToHiringManagerAddRequirementTest(Requirement requirement, String addoredit){
     Navigator.push(context, MaterialPageRoute(builder: (context){
-          return HiringManagerAddRequirement();
+          return HiringManagerAddRequirementTest(requirement, addoredit);
     }));
   }
 

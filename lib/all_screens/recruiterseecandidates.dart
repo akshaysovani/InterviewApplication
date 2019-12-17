@@ -39,7 +39,6 @@ class RecruiterSeeCandidatesByRequirementState
           title: Text('Java - Developer - Project alpha'),
         ),*/
 
-
         body: getListView(),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.blue[900],
